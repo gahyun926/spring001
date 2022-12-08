@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+encoding//src/main/java/com/pension/cafe/BbsController.java=UTF-8
+encoding//src/main/java/com/pension/cafe/HomeController.java=UTF-8
+encoding//src/main/java/com/pension/dao/BoardDAOImpl.java=UTF-8
+encoding//src/main/java/com/pension/dao/IF_boardDAO.java=UTF-8
+encoding//src/main/java/com/pension/service/IF_boardService.java=UTF-8
+encoding//src/main/webapp/WEB-INF/views/home.jsp=UTF-8

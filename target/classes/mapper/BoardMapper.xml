@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pension.dao.IF_boardDAO">
+	<insert id="insertOne" parameterType="com.pension.vo.BoardVO">
+		insert into board values
+		(board_cnt.nextval,#{name},#{email},#{title},#{content},#{pass},default,default)
+	</insert>
+
+	<select id="selectAll" resultType="com.pension.vo.BoardVO">
+		select t.* from (select sub.*,
+		rownum as rnum from (select * from board order by num DESC) sub) t
+		where rnum between #{startNo } and #{endNo }
+	</select>
+	<select id="countBoard" resultType="int">
+		select count(*) from board
+	</select>
+
+	<insert id="board_attach">
+		insert into board_attach values ((select max(num) from board),#{filename},default)
+	</insert>
+
+
+	<!-- <update> </update> <delete> </delete> <select> </select> -->
+
+	<select id="selectOne" resultType="com.pension.vo.BoardVO">
+		select * from board where num = #{vno}
+	</select>
+	<select id="selectAttach" resultType="String">
+		select fname from board_attach where num= #{vno}
+	</select>
+	<update id="cntplus">
+		update board set cnt=cnt+1 where num=#{vno}
+		
+	 </update>
+	<delete id="boardDel">
+		delete from board where num=#{vno}
+		
+	 </delete>
+	 <update id="updateBoard">
+		update board set pass=#{pass}, email=#{email},title=#{title},content=#{content} where num= #{num}
+		  
+	 </update>
+
+</mapper>
